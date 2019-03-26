@@ -5,6 +5,20 @@ There is a builtin `set` function, which implements the correct logic; I use it 
 
 To see the function perform, run the `inner_median.py` function (Python 2.7)
 
+```
+>> python inner_median.py
+1  should be 1
+2  should be 2
+2  should be 2
+2  should be 2
+should be an error next...
+Traceback (most recent call last):
+  File "inner_median.py", line 16, in <module>
+    print inner_median([],[])
+  File "inner_median.py", line 5, in inner_median
+    if _len == 0: raise ValueError("There were no common elements in x, y")
+ValueError: There were no common elements in x, y
+```
 -----------------------------
 
 

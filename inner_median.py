@@ -9,7 +9,8 @@ def inner_median(x,y):
 
 if __name__ == "__main__":
     print inner_median([1], [1]), ' should be 1'
-    print inner_median([1,1,3,2,1,3], [1,2,3,4]), ' should be 2.0'
-    print inner_median([3,1,2], [1,2,3,4]), ' should be 2.0'
-    print inner_median([1,3,2,1,3], [1,2,3,4]), ' should be 2.0'
-    print inner_median([],[]), ' should be error'
+    print inner_median([1,1,3,2,1,3], [1,2,3,4]), ' should be 2'
+    print inner_median([3,1,2], [1,2,3,4]), ' should be 2'
+    print inner_median([1,3,2,1,3], [1,2,3,4]), ' should be 2'
+    print 'should be an error next...'
+    print inner_median([],[])
