@@ -1,4 +1,5 @@
-# This script trains a model and evaluates it's performance on the product data
+# This script trains a model and evaluates its performance on the product data
+# It could be substantially cleaned up - it's written as a one-off script.
 
 data = []
 with open('labeled.csv') as f:
@@ -69,7 +70,7 @@ def label(row):
     row[-1] = row[-1].rstrip()
     x = row[0]
     preds = [m[0].predict_one(simple_one_hot_encoding(x))[1] for m in models]
-    lab = np.argmax(preds)
+    lab = np.argmax(preds) # use the highest prediction as the predicted label
     row.append(labels[lab]+'\n')
     return ','.join(row)
 
