@@ -31,6 +31,7 @@ To see the function perform, run the `inner_median.py` function (Python 2.7)
 -------------------------------------
 
 *Production*
+
     The online FTRL-logistic regression model lends itself well to massive training data sets; the model should be able to consume millions of labeled training data rows per hour on a single instance. If the volume of training data was greater, multiple models could be trained in parallel on subsets of the available data, and model reconcilliation process could be defined to condense most of the learning into a single model. I suspect diminishing returns from additional data for this particular problem would start to occur well before the need for any complex training system, anyway.
 
 To serve the model execution / inference, it would depend on the format of the requests. If the requests came as a stream of unlabeled product data (as in `unlabeled.csv`), and the response was the class probabilities for each class, a simple approach would be to instantiate the trained model in a python HTTP web server, and provide a `label` endpoint, to which requests could be POSTed. This approach scales well, and provides a clean, standard interface to one or more possible clients. The HTTP servers would be stateless and could be horizontally scaled.
@@ -45,6 +46,8 @@ To maintain quality over time, I'd monitor the running AUC during training - rem
 
 If the category taxonomy changed over time, say the dairy category was broken into cheese, milk and yogurt, it would naively require an additional model for each new category. This would be fine, and the models could be back trained on historical data. If the number of categories became cumbersome, it may be feasible to do a multi-step prediction process, in which parent categories are defined (say "dairy") and in serving/inference we only evaluate the child category ("yogurt", "milk", "cheese") probabilities if the parent category is the most likely or among the most likely parent labels. With a very large number of categories, a different feature encoding / model approach might be better, something like a k-nearest neighbor model would probably be very good. In fact, k-nearest neighbor could probably also handle changing or rare categories very easily.
 
+
+------------------------------
 
 *Results*
 ```
